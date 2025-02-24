@@ -20,7 +20,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      router.push('/login');
+      router.push('/auth/signin');
     }
   }, [isAuthenticated, router]);
 
