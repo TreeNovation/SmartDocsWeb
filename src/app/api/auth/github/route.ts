@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Forward the code to your Django backend
-    const response = await fetch(`${process.env.BACKEND_URL}/accounts/github/callback/?code=${code}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/accounts/github/callback/?code=${code}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

@@ -26,13 +26,13 @@ const Signin = () => {
       const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
       
       // Set redirect URI to our Next.js API route
-      const redirectUri = `${window.location.origin}/api/auth/google/callback`;
+      const redirectUri = `${process.env.NEXT_PUBLIC_BACKEND_URL}/accounts/google/callback`;
       
       // Scopes for Google OAuth (profile and email)
       const scope = encodeURIComponent("profile email");
       
       // Build Google OAuth URL
-      const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=${scope}&access_type=offline`;
+      const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}&access_type=offline`;
       
       // Redirect to Google's OAuth page
       window.location.href = googleAuthUrl;
@@ -97,7 +97,7 @@ const Signin = () => {
         }
         
         // Call your backend login API
-        const response = await fetch(`${process.env.BACKEND_URL}/api/login`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
